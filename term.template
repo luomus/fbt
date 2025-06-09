@@ -1,33 +1,33 @@
-<table>
-  <thead>
-    <tr>
-      <th colspan="2"><a id="fbt_{term}"></a>Term Name fbt:{term}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Term IRI</td>
-      <td><a href="http://luomus.github.io/fbt/#fbt_{term}">http://luomus.github.io/fbt/#fbt_{term}</a></td>
-    </tr>
-    <tr>
-      <td>Label</td>
-      <td>{label}</td>
-    </tr>
-    <tr>
-      <td>Definition</td>
-      <td>{definition}</td>
-    </tr>
-    <tr>
-      <td>Notes</td>
-      <td>{notes}</td>
-    </tr>
-    <tr>
-      <td>Examples</td>
-      <td>{examples}</td>
-    </tr>
-    <tr>
-      <td>Type</td>
-      <td>Property</td>
-    </tr>
-  </tbody>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2"><a id="finbifterm_{term}"></a>Term Name finbifterm:{term}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Term IRI</td>
+          <td><a href="http://rs.laji.fi/terms/{term}">http://rs.laji.fi/terms/{term}</a></td>
+        </tr>
+        <tr>
+          <td>Label</td>
+          <td>{lbl}</td>
+        </tr>
+        <tr>
+          <td>Definition</td>
+          <td>{dfn}</td>
+        </tr>
+        <tr>
+          <td>Notes</td>
+          <td>{nts}</td>
+        </tr>
+        <tr>
+          <td>Examples</td>
+          <td>{exl}</td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>Property</td>
+        </tr>
+      </tbody>
+    </table>
