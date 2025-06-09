@@ -73,7 +73,7 @@ for (term in terms) {
 
     dfn <- term_data[["HBDF.definition"]]
     dfn <- dfn[[which(vapply(dfn, "[[", "", "@language") == "en")]][["@value"]]
-    dfn <- lbl %||% ""
+    dfn <- dfn %||% ""
 
     nts <- term_data[["HBDF.notes"]]
     nts <- nts[[which(vapply(nts, "[[", "", "@language") == "en")]][["@value"]]
