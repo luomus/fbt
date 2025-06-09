@@ -1,6 +1,6 @@
 use("glue", "glue")
 use("jsonlite", "fromJSON")
-unlink("index.html")
+dir.create("build")
 
 cat(
   sprintf(
@@ -25,7 +25,7 @@ cat(
 ',
     Sys.Date()
   ),
-  file = "index.html",
+  file = "build/index.html",
   append = TRUE
 )
 
@@ -86,7 +86,7 @@ for (term in terms) {
       as.character(
         do.call(glue, c(as.list(term_template), .sep = "\n", .trim = FALSE))
       ),
-      file = "index.html",
+      file = "build/index.html",
       append = TRUE
     )
 
