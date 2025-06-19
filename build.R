@@ -44,7 +44,7 @@ terms <- c(
   "qualityIssues",
   "sourceName",
   "originatingSource",
-  "biogeographicialProvince",
+  "biogeographicalProvince",
   "locationName",
   "locationStatus",
   "femaleIndividualCount",
@@ -70,55 +70,34 @@ for (term in terms) {
 
   if (!inherits(term_data, "try-error")) {
 
-    lbl <- NULL
     lbl <- term_data[["label"]]
-
     if (hasName(lbl, "@language")) {
-
-      if (lbl[["@language"]] == "en") lbl <- lbl[["@value"]]
-
+      lbl <- if (lbl[["@language"]] == "en") lbl[["@value"]] else NULL
     } else {
-
       idx <- which(vapply(lbl, "[[", "", "@language") == "en")
 
-      if (length(idx)) lbl <- lbl[[idx]][["@value"]]
-
+      lbl <- if (length(idx)) lbl[[idx]][["@value"]] else NULL
     }
-
     lbl <- lbl %||% ""
 
-    dfn <- NULL
     dfn <- term_data[["HBDF.definition"]]
-
     if (hasName(dfn, "@language")) {
-
-      if (dfn[["@language"]] == "en") dfn <- dfn[["@value"]]
-
+      dfn <- if (dfn[["@language"]] == "en")  dfn[["@value"]] else NULL
     } else {
-
       idx <- which(vapply(dfn, "[[", "", "@language") == "en")
 
-      if (length(idx)) dfn <- dfn[[idx]][["@value"]]
-
+      dfn <- if (length(idx)) dfn[[idx]][["@value"]] else NULL
     }
-
     dfn <- dfn %||% ""
 
-    nts <- NULL
     nts <- term_data[["HBDF.notes"]]
-
     if (hasName(nts, "@language")) {
-
-      if (nts[["@language"]] == "en") nts <- nts[["@value"]]
-
+      nts <- if (nts[["@language"]] == "en") nts[["@value"]] else NULL
     } else {
-
       idx <- which(vapply(nts, "[[", "", "@language") == "en")
 
-      if (length(idx)) nts <- nts[[idx]][["@value"]]
-
+      nts <- if (length(idx)) nts[[idx]][["@value"]] else NULL
     }
-
     nts <- nts %||% ""
 
     exl <- paste(term_data[["HBDF.examples"]], collapse = "</br>")
@@ -131,7 +110,6 @@ for (term in terms) {
       file = "build/index.html",
       append = TRUE
     )
-
   }
 }
 
