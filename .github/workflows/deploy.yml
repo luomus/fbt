@@ -32,7 +32,7 @@ jobs:
         R -e 'options(repos = c(CRAN = "https://cloud.r-project.org"))'
         R -e 'install.packages(c("glue", "jsonlite"), dependencies = TRUE)'
 
-    - name: Render RMarkdown
+    - name: Render page
       run: |
         Rscript -e 'source("build.R")'
 

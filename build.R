@@ -38,14 +38,17 @@ terms <- c(
   "lajiturvaStatus",
   "regulatoryStatuses",
   "taxonPreferredHabitat",
-  "isSensitive",
+  "isSensitiveTaxon",
   "datasetCurationLevel",
   "qualityControl",
   "qualityIssues",
   "sourceName",
-  "orginatingSource",
-  "biogeographcialProvince",
+  "originatingSource",
+  "biogeographicialProvince",
+  "locationName",
   "locationStatus",
+  "femaleIndividualCount",
+  "maleIndividualCount",
   "pairCount",
   "isMigrating",
   "isBreedingSite",
@@ -67,16 +70,55 @@ for (term in terms) {
 
   if (!inherits(term_data, "try-error")) {
 
+    lbl <- NULL
     lbl <- term_data[["label"]]
-    lbl <- lbl[[which(vapply(lbl, "[[", "", "@language") == "en")]][["@value"]]
+
+    if (hasName(lbl, "@language")) {
+
+      if (lbl[["@language"]] == "en") lbl <- lbl[["@value"]]
+
+    } else {
+
+      idx <- which(vapply(lbl, "[[", "", "@language") == "en")
+
+      if (length(idx)) lbl <- lbl[[idx]][["@value"]]
+
+    }
+
     lbl <- lbl %||% ""
 
+    dfn <- NULL
     dfn <- term_data[["HBDF.definition"]]
-    dfn <- dfn[[which(vapply(dfn, "[[", "", "@language") == "en")]][["@value"]]
+
+    if (hasName(dfn, "@language")) {
+
+      if (dfn[["@language"]] == "en") dfn <- dfn[["@value"]]
+
+    } else {
+
+      idx <- which(vapply(dfn, "[[", "", "@language") == "en")
+
+      if (length(idx)) dfn <- dfn[[idx]][["@value"]]
+
+    }
+
     dfn <- dfn %||% ""
 
+    nts <- NULL
     nts <- term_data[["HBDF.notes"]]
-    nts <- nts[[which(vapply(nts, "[[", "", "@language") == "en")]][["@value"]]
+
+    if (hasName(nts, "@language")) {
+
+      if (nts[["@language"]] == "en") nts <- nts[["@value"]]
+
+    } else {
+
+      idx <- which(vapply(nts, "[[", "", "@language") == "en")
+
+      if (length(idx)) nts <- nts[[idx]][["@value"]]
+
+    }
+
     nts <- nts %||% ""
 
     exl <- paste(term_data[["HBDF.examples"]], collapse = "</br>")
@@ -92,7 +134,6 @@ for (term in terms) {
 
   }
 }
-
 
 cat(
   '
